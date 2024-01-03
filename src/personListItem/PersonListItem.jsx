@@ -15,10 +15,10 @@ export default function PersonListItem(props) {
         <TableCell
           id="nameCell"
           className="name-cell"
-          sx={{ width: "80px", padding: "8px", textAlign: "center" }}
+          sx={{ padding: "8px", textAlign: "center" }}
         >
           <Box
-            sx={{ width: "100%", margin: 0, padding: 0 }}
+            sx={{ margin: 0, padding: 0 }}
             onMouseEnter={() => setNameHover(true)}
             onMouseLeave={() => setNameHover(false)}
           >
@@ -57,7 +57,7 @@ export default function PersonListItem(props) {
           sx={{ textAlign: "center" }}
         >
           <Box
-            sx={{ width: "100%", margin: 0, padding: 0 }}
+            sx={{ margin: 0, padding: 0 }}
             onMouseEnter={() => setTimeHover(true)}
             onMouseLeave={() => setTimeHover(false)}
           >

@@ -8,8 +8,10 @@ import {
   Typography,
   TableHead,
   TableBody,
+  Card,
+  CardContent,
+  Box,
 } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import PersonListItem from "../personListItem/PersonListItem";
 import { useCallback, useRef, useState } from "react";
 import AddButton from "../components/AddButton";
@@ -63,67 +65,88 @@ function DayCard() {
       <Grid
         container
         className="day-card"
-        sx={{
-          alignItems: "center",
-          fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-          display: "flex",
-          flexDirection: "column",
-          color: "black",
-          maxWidth: "350px",
-          minWidth: "315px",
-        }}
+        xs={12}
       >
         <Grid
           item
           sx={{
-            textAlign: "center",
-          }}
-        >
-          <Typography variant="h4">Today</Typography>
-        </Grid>
-        <Grid
-          item
-          sx={{ paddingBottom: "10px" }}
-          xs={12}
-        >
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell sx={{ textAlign: "center" }}>Name</TableCell>
-                <TableCell
-                  colSpan={2}
-                  sx={{ textAlign: "center" }}
-                >
-                  Schedule
-                </TableCell>
-                <TableCell sx={{ textAlign: "center" }}>Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {schedule.map((person) => (
-                <PersonListItem
-                  id={person.id}
-                  name={person.name}
-                  startTime={person.startTime}
-                  endTime={person.endTime}
-                  handleRemoveClick={handleRemoveClick}
-                />
-              ))}
-            </TableBody>
-          </Table>
-        </Grid>
-        <Grid
-          container
-          xs={12}
-          sx={{
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            paddingRight: "1em",
-            height: "10px",
+            flexDirection: "column",
+            padding: "20px",
           }}
         >
-          <AddButton handleAddClick={handleAddClick} />
+          <Card
+            variant="outlined"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "30px",
+              color: "#35363A",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="h3"
+              component={"h1"}
+              sx={{
+                paddingBottom: "20px",
+                paddingLeft: "30px",
+                alignSelf: "flex-start",
+              }}
+            >
+              Today
+            </Typography>
+            <CardContent
+              sx={{
+                border: "1px solid #35363A",
+                borderRadius: "10px",
+                width: "95%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={{ textAlign: "center" }}>Name</TableCell>
+                    <TableCell
+                      colSpan={2}
+                      sx={{ textAlign: "center" }}
+                    >
+                      Schedule
+                    </TableCell>
+                    <TableCell sx={{ textAlign: "center" }}>Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {schedule.map((person) => (
+                    <PersonListItem
+                      id={person.id}
+                      name={person.name}
+                      startTime={person.startTime}
+                      endTime={person.endTime}
+                      handleRemoveClick={handleRemoveClick}
+                    />
+                  ))}
+                </TableBody>
+              </Table>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "flex-end",
+                  paddingTop: "10px",
+                  paddingRight: "53.5px",
+                  height: "40px",
+                }}
+              >
+                <AddButton
+                  handle
+                  AddClick={handleAddClick}
+                />
+              </Box>
+            </CardContent>
+          </Card>
         </Grid>
       </Grid>
     </>
