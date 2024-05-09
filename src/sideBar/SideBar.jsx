@@ -30,7 +30,7 @@ function Sidebar(props) {
                 flexItem
               />
             }
-            sx={{ width: "200px", padding: "50px" }}
+            sx={{ padding: "50px" }}
           >
             <Box>
               <Link

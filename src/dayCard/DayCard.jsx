@@ -11,6 +11,7 @@ import {
   Card,
   CardContent,
   Box,
+  CardHeader,
 } from "@mui/material";
 import PersonListItem from "../personListItem/PersonListItem";
 import { useCallback, useRef, useState } from "react";
@@ -67,87 +68,66 @@ function DayCard() {
         className="day-card"
         xs={12}
       >
-        <Grid
-          item
+        <Card
           sx={{
             display: "flex",
             flexDirection: "column",
-            padding: "20px",
+            padding: "30px",
+            color: "#35363A",
+            // alignItems: "center",
           }}
         >
-          <Card
-            variant="outlined"
+          <CardHeader title={"Today"} />
+          <CardContent
             sx={{
+              border: "1px solid #35363A",
+              borderRadius: "10px",
               display: "flex",
               flexDirection: "column",
-              padding: "30px",
-              color: "#35363A",
-              alignItems: "center",
             }}
           >
-            <Typography
-              variant="h3"
-              component={"h1"}
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell
+                    colSpan={2}
+                    // sx={{ textAlign: "center" }}
+                  >
+                    Schedule
+                  </TableCell>
+                  <TableCell>Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {schedule.map((person) => (
+                  <PersonListItem
+                    id={person.id}
+                    name={person.name}
+                    startTime={person.startTime}
+                    endTime={person.endTime}
+                    handleRemoveClick={handleRemoveClick}
+                  />
+                ))}
+              </TableBody>
+            </Table>
+            <Box
               sx={{
-                paddingBottom: "20px",
-                paddingLeft: "30px",
-                alignSelf: "flex-start",
-              }}
-            >
-              Today
-            </Typography>
-            <CardContent
-              sx={{
-                border: "1px solid #35363A",
-                borderRadius: "10px",
-                width: "95%",
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                paddingTop: "10px",
+                paddingRight: "13.5px",
+                height: "30px",
               }}
             >
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell sx={{ textAlign: "center" }}>Name</TableCell>
-                    <TableCell
-                      colSpan={2}
-                      sx={{ textAlign: "center" }}
-                    >
-                      Schedule
-                    </TableCell>
-                    <TableCell sx={{ textAlign: "center" }}>Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {schedule.map((person) => (
-                    <PersonListItem
-                      id={person.id}
-                      name={person.name}
-                      startTime={person.startTime}
-                      endTime={person.endTime}
-                      handleRemoveClick={handleRemoveClick}
-                    />
-                  ))}
-                </TableBody>
-              </Table>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "flex-end",
-                  paddingTop: "10px",
-                  paddingRight: "53.5px",
-                  height: "40px",
-                }}
-              >
-                <AddButton
-                  handle
-                  AddClick={handleAddClick}
-                />
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
+              <AddButton
+                handle
+                AddClick={handleAddClick}
+              />
+            </Box>
+          </CardContent>
+        </Card>
       </Grid>
     </>
   );
