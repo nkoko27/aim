@@ -111,7 +111,6 @@ export default function StaffTable(props) {
             sx={{
               border: "1px solid #35363A",
               borderRadius: "10px",
-              width: "95%",
               display: "flex",
               flexDirection: "column",
             }}
